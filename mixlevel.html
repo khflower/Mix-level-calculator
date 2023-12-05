@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>계산기</title>
+    <style>
+        /* CSS 스타일링 */
+        /* 계산기 버튼 스타일링 */
+        .calculator-button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+
+        /* 입력칸 텍스트 스타일링 */
+        .input-label {
+            font-weight: bold;
+        }
+
+        /* 입력칸 컨테이너 스타일링 */
+        .input-container {
+            display: grid;
+            grid-template-columns: repeat(3, 80px); /* 각 그리드의 크기 조정 */
+            gap: 5px;
+            text-align: center;
+        }
+
+        /* 입력칸 스타일링 */
+        .input-field {
+            margin-top: 5px;
+            width: 60px; /* 각 입력 필드의 크기 조정 */
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <div class="input-container">
+            <div class="input-label">계산기</div>
+            <div class="input-label">메인코어</div>
+            <div class="input-label">서브코어</div>
+        </div>
+        <div class="input-container">
+            <div class="input-label">현재레벨</div>
+            <input type="text" class="input-field" id="input1">
+            <input type="text" class="input-field" id="input2">
+        </div>
+        <div class="input-container">
+            <div class="input-label">맥스레벨</div>
+            <input type="text" class="input-field" id="input3">
+            <input type="text" class="input-field" id="input4">
+        </div>
+        <button class="calculator-button" onclick="calculate()">계산</button>
+        <br>
+        <input type="text" id="output" readonly>
+    </div>
+
+    <script>
+        // JavaScript 코드
+        // 계산 함수
+        function calculate() {
+            var input1 = parseFloat(document.getElementById("input1").value) || 0;
+            var input2 = parseFloat(document.getElementById("input2").value) || 0;
+            var input3 = parseFloat(document.getElementById("input3").value) || 0;
+            var input4 = parseFloat(document.getElementById("input4").value) || 0;
+            var outputInput = document.getElementById("output");
+
+            var avg = parseInt((input1 + input2) / 2);
+            var x = parseInt((100 * input1) / input3);
+            var y = parseInt((100 * input2) / input4);
+            var result = parseInt(avg + ((x + y) * 0.05));
+            outputInput.value = result;
+        }
+    </script>
+</body>
+</html>
